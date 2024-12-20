@@ -1,7 +1,6 @@
 package com.rentalmanagement.vehicles;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 public abstract class Vehicle {
 // private fields (Encapsulation)

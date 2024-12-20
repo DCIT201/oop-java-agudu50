@@ -5,7 +5,6 @@ public class Motorcycle extends Vehicle {
 
     public Motorcycle (String vehicleId, String model, double baseRentalRate, boolean hasHelmetInclude) {
         super(vehicleId, model, baseRentalRate);
-        this.hasHelmetIncluded = hasHelmetIncluded;
     }
 
 

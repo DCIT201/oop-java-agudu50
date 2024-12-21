@@ -13,11 +13,10 @@ public class Customer {
 
 
     /**
-     * Constructs a new Customer with the given ID and name.
+     * Constructing a new Customer with the given ID and name.
      * Initially, the customer has 0 loyalty points.
-     *
-     * @param customerId The unique ID for the customer.
-     * @param name       The name of the customer.
+     *  customerId The unique ID for the customer.
+     *  name       The name of the customer.
      */
 
     public Customer(String customerId, String name) {

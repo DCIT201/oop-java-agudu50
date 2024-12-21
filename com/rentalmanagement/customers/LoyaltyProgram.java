@@ -12,7 +12,7 @@ public interface LoyaltyProgram {
 
     /**
      * Adds rental points to the customer's total.
-     * @param points the number of points to add
+     * points the number of points to add
      */
 
     void addRentalPoints(int points);
@@ -42,9 +42,8 @@ public interface LoyaltyProgram {
         /**
          * Constructs a new customer with an ID and name.
          * Loyalty points are initially set to 0.
-         *
-         * @param customerId the unique identifier for the customer
-         * @param name the name of the customer
+          customerId the unique identifier for the customer
+         * name the name of the customer
          */
 
 
@@ -57,8 +56,7 @@ public interface LoyaltyProgram {
 
         /**
          * Adds rental points to the customer's total.
-         *
-         * @param points the points to add
+         * points the points to add
          */
 
         @Override

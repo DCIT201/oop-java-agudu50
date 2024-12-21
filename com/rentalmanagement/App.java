@@ -1,5 +1,6 @@
 package com.rentalmanagement;
 
+import com.rentalmanagement.Exceptions.InvalidVehicleIdException;
 import com.rentalmanagement.customers.Customer;
 import com.rentalmanagement.transactions.RentalAgency;
 import com.rentalmanagement.vehicles.Car;
@@ -7,7 +8,7 @@ import com.rentalmanagement.vehicles.Motorcycle;
 import com.rentalmanagement.vehicles.Truck;
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidVehicleIdException {
         RentalAgency agency = new RentalAgency();
 
         // Add vehicles to the fleet

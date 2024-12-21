@@ -1,5 +1,6 @@
 package com.rentalmanagement.transactions;
 
+import com.rentalmanagement.Exceptions.InvalidVehicleIdException;
 import com.rentalmanagement.customers.Customer;
 import com.rentalmanagement.vehicles.Vehicle;
 
@@ -29,7 +30,7 @@ public class RentalAgency {
     }
 
     // Renting a vehicle
-    public String rentVehicle(String vehicleId, Customer customer, int days) {
+    public String rentVehicle(String vehicleId, Customer customer, int days) throws InvalidVehicleIdException{
         for (Vehicle vehicle : vehicleFleet) {
             if (vehicle.getVehicleId().equals(vehicleId) && vehicle.isAvailableForRental()) {
                 double rentalCost = vehicle.calculateRentalCost(days);
@@ -37,10 +38,10 @@ public class RentalAgency {
                 RentalTransaction transaction = new RentalTransaction(vehicle, customer, days, rentalCost);
                 rentalTransactions.add(transaction);
                 customer.addRentalPoints(days);
-                return "Rental successful! Cost: $" + rentalCost + " .Loyal Points: " + customer.getLoyaltyPoints();
+                return "Rental successful! Cost: $" + rentalCost + " Loyal Points: " + customer.getLoyaltyPoints();
             }
         }
-        return "Vehicle ID not found or unavailable!";
+        throw new InvalidVehicleIdException( "Vehicle ID not found or unavailable!");
     }
 
     // Returning a vehicle

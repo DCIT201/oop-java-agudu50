@@ -1,5 +1,6 @@
 package com.rentalmanagement.transactions;
 
+import com.rentalmanagement.Exceptions.InvalidVehicleIdException;
 import com.rentalmanagement.Exceptions.VehicleNotAvailableException;
 import com.rentalmanagement.customers.Customer;
 import com.rentalmanagement.vehicles.Car;
@@ -10,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class RentalAgencyTest {
 
     @Test
-    void testRentVehicle() {
+    void testRentVehicle() throws InvalidVehicleIdException {
         RentalAgency agency = new RentalAgency();
         Car car = new Car("C1", "Sedan",50, true, true);
         agency.addVehicle(car);
@@ -23,7 +24,7 @@ class RentalAgencyTest {
     }
 
     @Test
-    void testReturnVehicle() {
+    void testReturnVehicle() throws InvalidVehicleIdException {
         RentalAgency agency = new RentalAgency();
         Car car = new Car("C1", "Sedan", 50, true, true);
         agency.addVehicle(car);
@@ -49,7 +50,7 @@ class RentalAgencyTest {
     }
 
     @Test
-    void testVehicleNotAvailableException() {
+    void testVehicleNotAvailableException() throws InvalidVehicleIdException {
         RentalAgency agency = new RentalAgency();
         Car car = new Car("C1", "Sedan", 50, true, true);
         agency.addVehicle(car);

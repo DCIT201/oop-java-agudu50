@@ -11,7 +11,7 @@ public class App {
         RentalAgency agency = new RentalAgency();
 
         // Add vehicles to the fleet
-        agency.addVehicle(new Car("C1", "Sedan", 50, true));
+        agency.addVehicle(new Car("C1", "Sedan", 50, true, true));
         agency.addVehicle(new Motorcycle("M1", "Sport Bike", 30, true));
         agency.addVehicle(new Truck("T1", "Cargo Truck", 100, 500));
 
@@ -23,7 +23,8 @@ public class App {
         Customer customer = new Customer("CU1", "John Doe");
 
         // Rent a vehicle
-        System.out.println("\n" + agency.rentVehicle("C1", customer, 3));
+
+        System.out.println("\n" + agency.rentVehicle("C1", customer, 3) );
 
         // Display available vehicles after renting
         System.out.println("\nAvailable Vehicles After Renting:");
@@ -34,7 +35,8 @@ public class App {
         agency.generateRentalReport();
 
         // Return the vehicle
-        System.out.println("\n" + agency.returnVehicle("C1", 4.5));
+        String returnResult = agency.returnVehicle("C1");
+        System.out.println("\nReturn Result: " + returnResult);
 
         // Display available vehicles after return
         System.out.println("\nAvailable Vehicles After Return:");

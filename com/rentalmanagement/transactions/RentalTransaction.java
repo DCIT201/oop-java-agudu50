@@ -6,14 +6,14 @@ import com.rentalmanagement.vehicles.Vehicle;
 public class RentalTransaction {
     private Vehicle vehicle;
     private Customer customer;
-    private int rentalDays;
-    private double totalCost;
+    private int days;
+    private double rentalCost;
 
-    public RentalTransaction(Vehicle vehicle, Customer customer, int rentalDays, double totalCost) {
+    public RentalTransaction(Vehicle vehicle, Customer customer, int days, double rentalCost) {
         this.vehicle = vehicle;
         this.customer = customer;
-        this.rentalDays = rentalDays;
-        this.totalCost = totalCost;
+        this.days = days;
+        this.rentalCost = rentalCost;
     }
 
     public Vehicle getVehicle() {
@@ -24,12 +24,12 @@ public class RentalTransaction {
         return customer;
     }
 
-    public int getRentalDays() {
-        return rentalDays;
+    public int getDays() {
+        return days;
     }
 
-    public double getTotalCost() {
-        return totalCost;
+    public double getRentalCost() {
+        return rentalCost;
     }
 
     @Override
@@ -37,8 +37,8 @@ public class RentalTransaction {
         return "RentalTransaction{" +
                 "vehicle=" + vehicle +
                 ", customer=" + customer +
-                ", rentalDays=" + rentalDays +
-                ", totalCost=" + totalCost +
+                ", days=" + days +
+                ", rentalCost=" + rentalCost +
                 '}';
     }
 }

@@ -1,51 +1,58 @@
 package com.rentalmanagement.customers;
 
-import java.util.ArrayList;
-import java.util.List;
+
+/**
+ * Represents a customer in the vehicle rental management system.
+ * Stores the customer's ID, name, and loyalty points.
+ */
 
 public class Customer {
-    private String customerId;
-    private String name;
+    private final String customerId;
+    private final String name;
     private int loyaltyPoints;
-    private List<String> rentalsHistory; // Keeps track of rented vehicle IDs
+
+
+    /**
+     * Constructs a new Customer with the given ID and name.
+     * Initially, the customer has 0 loyalty points.
+     *
+     * @param customerId The unique ID for the customer.
+     * @param name       The name of the customer.
+     */
 
     public Customer(String customerId, String name) {
         this.customerId = customerId;
         this.name = name;
         this.loyaltyPoints = 0;
-        this.rentalsHistory = new ArrayList<>();
     }
 
+    // Adding of getters
     public String getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
+
+    /**
+     * Adds rental points to the customer's loyalty points balance.
+     *
+     * @param points The number of points to add.
+     */
+
+    public void addRentalPoints(int points) {
+        this.loyaltyPoints += points;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    // Add loyalty points
-    public void addLoyaltyPoints(int points) {
-        if (points < 0) {
-            throw new IllegalArgumentException("Points cannot be negative.");
-        }
-        this.loyaltyPoints += points; // Correctly updating loyaltyPoints field
-    }
-
-    // Get current loyalty points
+    // Adding of getters
     public int getLoyaltyPoints() {
         return loyaltyPoints;
     }
 
-    // Get loyalty status based on points
+
+    /**
+     * Returns the loyalty status of the customer based on loyalty points.
+     *
+     * @return A string representing the customer's loyalty status.
+     */
     public String getLoyaltyStatus() {
         if (loyaltyPoints >= 100) {
             return "Gold";
@@ -56,15 +63,11 @@ public class Customer {
         }
     }
 
-    // Add to rental history
-    public void addToRentalHistory(String vehicleId) {
-        rentalsHistory.add(vehicleId);
-    }
-
-    // Get rental history
-    public List<String> getRentalHistory() {
-        return rentalsHistory;
-    }
+    /**
+     * Provides a string representation of the customer.
+     *
+     * @return A formatted string containing the customer's details.
+     */
 
     @Override
     public String toString() {
@@ -75,4 +78,7 @@ public class Customer {
                 ", loyaltyStatus='" + getLoyaltyStatus() + '\'' +
                 '}';
     }
+
+
+
 }

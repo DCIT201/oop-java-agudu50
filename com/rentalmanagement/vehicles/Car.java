@@ -1,37 +1,33 @@
 package com.rentalmanagement.vehicles;
 
 public class Car extends Vehicle {
-    private boolean hasAirConditioning;
+    private final boolean isAutomatic;
 
-
-    public Car (String vehicleId, String model, double baseRentalRate, boolean hasAirConditioning ) {
-        super(vehicleId, model, baseRentalRate);
-        this.hasAirConditioning = hasAirConditioning;
+    public Car(String vehicleId, String model, double baseRentalRate, boolean isAvailable, boolean automatic) {
+        super(vehicleId, model, baseRentalRate, isAvailable);
+        this.isAutomatic = automatic;
     }
-
-
-
-    @Override
-    public double calculateRentalCost(int days){
-        double cost = getBaseRentalRate() * days;
-
-        if(hasAirConditioning){
-            cost += 50; //Extra charge for AC
-        }
-        return cost;
-    }
+public boolean isAutomatic() {
+        return isAutomatic;
+}
 
     @Override
     public boolean isAvailableForRental() {
-        return isAvailable();
+        return super.isAvailable();
     }
 
     @Override
-    public String toString() {
-        return super.toString() + ", hasAirConditioning: " + hasAirConditioning;
+    public double calculateRentalCost(int days) {
+        return getBaseRentalRate() * days;
     }
-
-
-
+    @Override
+    public String toString() {
+        return "Car{" +
+                "vehicleId='" + getVehicleId() + '\'' +
+                ", model='" + getModel() + '\'' +
+                ", baseRentalRate=" + getBaseRentalRate() +
+                ", isAutomatic=" + isAutomatic +
+                '}';
+    }
 
 }

@@ -1,86 +1,40 @@
 package com.rentalmanagement.vehicles;
 
-
-
 public abstract class Vehicle {
-// private fields (Encapsulation)
-    private String vehicleId;
-    private String model;
-    private double baseRentalRate;
-    private boolean isAvailable;
-    private double ratings;
+    private final String vehicleId;
+    private final String model;
+    private final double baseRentalRate;
+    private boolean isAvailable;  // Private field to store the availability status
 
-
-//Creating  Constructors Vehicle
-    public Vehicle (String vehicleId, String model, double baseRentalRate){
+    // Constructor to initialize the vehicle properties
+    public Vehicle(String vehicleId, String model, double baseRentalRate, boolean isAvailable) {
         this.vehicleId = vehicleId;
         this.model = model;
         this.baseRentalRate = baseRentalRate;
-        this.isAvailable = true; // Default: available for rental
-        this.ratings = ratings;
+        this.isAvailable = isAvailable;  // Initialize availability
     }
 
-
-
-    //Add a rating(1-5)
-    public void addRating(double rating){
-        if(rating >=0 || rating <= 5){
-            this.ratings += rating;
-
-        }else {
-            throw new IllegalArgumentException("Ratings must be between 0 and 5");
-        }
-
-
-
-    }
-
-    //Get average rating
-    public double getAverageRating(){
-        return ratings;
-
-    }
-
-
-
-
-    //Abstract methods (Abstraction)
-    public abstract double calculateRentalCost(int days);
-    public abstract boolean isAvailableForRental();
-
-
-    //Getters and Setters
+    // Getters and setters for the fields
     public String getVehicleId() {
         return vehicleId;
     }
 
-    public void setVehicleId(String vehicleId) {
-        this.vehicleId = vehicleId;
-    }
-
-    public String getModel(){
+    public String getModel() {
         return model;
-    }
-
-    public void setModel(String model){
-        this.model = model;
     }
 
     public double getBaseRentalRate() {
         return baseRentalRate;
     }
 
-    public void setBaseRentalRate(double baseRentalRate) {
-        this.baseRentalRate = baseRentalRate;
-    }
-
     public boolean isAvailable() {
-        return isAvailable;
+        return isAvailable;  // Return the availability status
     }
 
     public void setAvailable(boolean available) {
-        this.isAvailable = available;
+        this.isAvailable = available;  // Set the availability status
     }
+
 
     @Override
     public String toString() {
@@ -88,7 +42,12 @@ public abstract class Vehicle {
                 "vehicleId='" + vehicleId + '\'' +
                 ", model='" + model + '\'' +
                 ", baseRentalRate=" + baseRentalRate +
-                ", isAvailable=" + isAvailable +
                 '}';
     }
+
+    // Abstract method to be implemented by subclasses (like Car)
+    public abstract double calculateRentalCost(int days);
+
+    // Abstract method to be implemented by subclasses for checking availability
+    public abstract boolean isAvailableForRental();
 }

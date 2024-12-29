@@ -1,57 +1,53 @@
 package com.rentalmanagement.customers;
 
-
 /**
- * Represents a customer in the vehicle rental management system.
- * Stores the customer's ID, name, and loyalty points.
+ * The Customer class represents a customer in the rental management system.
+ * It implements the LoyaltyProgram interface to manage loyalty points.
  */
-
-public class Customer {
+public class Customer implements LoyaltyProgram {
     private final String customerId;
     private final String name;
     private int loyaltyPoints;
 
-
     /**
-     * Constructing a new Customer with the given ID and name.
-     * Initially, the customer has 0 loyalty points.
-     *  customerId The unique ID for the customer.
-     *  name       The name of the customer.
+     * Constructs a new customer with an ID and name.
+     * Loyalty points are initially set to 0.
+     * @param customerId the unique identifier for the customer.
+     * @param name the name of the customer.
      */
-
     public Customer(String customerId, String name) {
         this.customerId = customerId;
         this.name = name;
-        this.loyaltyPoints = 0;
+        this.loyaltyPoints = 0; // Default points
     }
-
-    // Adding of getters
-    public String getCustomerId() {
-        return customerId;
-    }
-
 
     /**
-     * Adds rental points to the customer's loyalty points balance.
-     *
-     * @param points The number of points to add.
+     * Adds rental points to the customer's total.
+     * @param points the points to add.
      */
-
+    @Override
     public void addRentalPoints(int points) {
-        this.loyaltyPoints += points;
+        if (points >= 0) {
+            this.loyaltyPoints += points;
+        } else {
+            throw new IllegalArgumentException("Points cannot be negative.");
+        }
     }
-
-    // Adding of getters
-    public int getLoyaltyPoints() {
-        return loyaltyPoints;
-    }
-
 
     /**
-     * Returns the loyalty status of the customer based on loyalty points.
-     *
-     * @return A string representing the customer's loyalty status.
+     * Retrieves the current loyalty points of the customer.
+     * @return the current loyalty points.
      */
+    @Override
+    public int getLoyaltyPoints() {
+        return this.loyaltyPoints;
+    }
+
+    /**
+     * Returns the customer's loyalty status based on their points.
+     * @return the loyalty status ("Gold", "Silver", or "Bronze").
+     */
+    @Override
     public String getLoyaltyStatus() {
         if (loyaltyPoints >= 100) {
             return "Gold";
@@ -63,11 +59,9 @@ public class Customer {
     }
 
     /**
-     * Provides a string representation of the customer.
-     *
-     * @return A formatted string containing the customer's details.
+     * Returns a string representation of the Customer object.
+     * @return a string representing the customer.
      */
-
     @Override
     public String toString() {
         return "Customer{" +
@@ -77,7 +71,4 @@ public class Customer {
                 ", loyaltyStatus='" + getLoyaltyStatus() + '\'' +
                 '}';
     }
-
-
-
 }

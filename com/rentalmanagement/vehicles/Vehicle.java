@@ -35,6 +35,7 @@ public abstract class Vehicle {
         this.isAvailable = available;  // Set the availability status
     }
 
+    public abstract boolean isAvailableForRental();
 
     @Override
     public String toString() {
@@ -42,12 +43,10 @@ public abstract class Vehicle {
                 "vehicleId='" + vehicleId + '\'' +
                 ", model='" + model + '\'' +
                 ", baseRentalRate=" + baseRentalRate +
+                ", isAvailable=" + isAvailable +
                 '}';
     }
 
     // Abstract method to be implemented by subclasses (like Car)
     public abstract double calculateRentalCost(int days);
-
-    // Abstract method to be implemented by subclasses for checking availability
-    public abstract boolean isAvailableForRental();
 }

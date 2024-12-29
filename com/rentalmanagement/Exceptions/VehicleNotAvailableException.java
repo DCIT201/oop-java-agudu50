@@ -1,9 +1,12 @@
 package com.rentalmanagement.Exceptions;
 
+import java.io.Serial;
+
 /**
  * Custom exception to handle scenarios where a vehicle is not available for rental.
  */
 public class VehicleNotAvailableException extends Exception {
+    @Serial
     private static final long serialVersionUID = 1L; // Serialization ID
 
     /**
@@ -15,22 +18,4 @@ public class VehicleNotAvailableException extends Exception {
         super(message);
     }
 
-    /**
-     * Constructor with a message and a cause.
-     *
-     * @param message The detail message explaining the exception.
-     * @param cause   The cause of the exception (can be null).
-     */
-    public VehicleNotAvailableException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    /**
-     * Constructor with only the cause.
-     *
-     * @param cause The cause of the exception (can be null).
-     */
-    public VehicleNotAvailableException(Throwable cause) {
-        super(cause);
-    }
 }

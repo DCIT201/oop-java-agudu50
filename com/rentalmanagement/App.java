@@ -1,6 +1,7 @@
 package com.rentalmanagement;
 
 import com.rentalmanagement.Exceptions.InvalidVehicleIdException;
+import com.rentalmanagement.Exceptions.VehicleNotAvailableException;
 import com.rentalmanagement.customers.Customer;
 import com.rentalmanagement.transactions.RentalAgency;
 import com.rentalmanagement.vehicles.Car;
@@ -8,7 +9,7 @@ import com.rentalmanagement.vehicles.Motorcycle;
 import com.rentalmanagement.vehicles.Truck;
 
 public class App {
-    public static void main(String[] args) throws InvalidVehicleIdException {
+    public static void main(String[] args) throws InvalidVehicleIdException, VehicleNotAvailableException {
         RentalAgency agency = new RentalAgency();
 
         // Add vehicles to the fleet
@@ -25,7 +26,13 @@ public class App {
 
         // Rent a vehicle
 
-        System.out.println("\n" + agency.rentVehicle("C1", customer, 3) );
+        try {
+            System.out.println("\n" + agency.rentVehicle("C1", customer, 3));
+        } catch (InvalidVehicleIdException | VehicleNotAvailableException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+
 
         // Display available vehicles after renting
         System.out.println("\nAvailable Vehicles After Renting:");

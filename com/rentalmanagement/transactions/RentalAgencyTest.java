@@ -11,22 +11,22 @@ import static org.junit.jupiter.api.Assertions.*;
 class RentalAgencyTest {
 
     @Test
-    void testRentVehicle() throws InvalidVehicleIdException {
+    void testRentVehicle() throws InvalidVehicleIdException, VehicleNotAvailableException {
         RentalAgency agency = new RentalAgency();
-        Car car = new Car("C1", "Sedan",50.0, true, true);
+        Car car = new Car("C1", "Sedan", 50.0, true, true);
         agency.addVehicle(car);
 
         Customer customer = new Customer("CU1", "John Doe");
         String result = agency.rentVehicle("C1", customer, 2);
 
         assertEquals("Rental successful! Cost: $100.0 .Loyal Points: 2", result);
-        assertFalse(car.isAvailableForRental()); // Correct method name to check availability
+        assertFalse(car.isAvailableForRental()); // Vehicle should be rented and unavailable
     }
 
     @Test
-    void testReturnVehicle() throws InvalidVehicleIdException {
+    void testReturnVehicle() throws InvalidVehicleIdException, VehicleNotAvailableException {
         RentalAgency agency = new RentalAgency();
-        Car car = new Car("C1", "Sedan", 50, true, true);
+        Car car = new Car("C1", "Sedan", 50.0, true, true);
         agency.addVehicle(car);
 
         Customer customer = new Customer("CU1", "Anthony Gudu");
@@ -34,7 +34,7 @@ class RentalAgencyTest {
         String result = agency.returnVehicle("C1");
 
         assertEquals("Vehicle returned successfully!", result);
-        assertTrue(car.isAvailableForRental()); // Correct method name to check availability
+        assertTrue(car.isAvailableForRental()); // Vehicle should be available after return
     }
 
     @Test
@@ -50,13 +50,15 @@ class RentalAgencyTest {
     }
 
     @Test
-    void testVehicleNotAvailableException() throws InvalidVehicleIdException {
+    void testVehicleNotAvailableException() throws InvalidVehicleIdException, VehicleNotAvailableException {
         RentalAgency agency = new RentalAgency();
-        Car car = new Car("C1", "Sedan", 50, true, true);
+        Car car = new Car("C1", "Sedan", 50.0, true, true);
         agency.addVehicle(car);
 
+        // Rent the vehicle
         agency.rentVehicle("C1", new Customer("CU1", "Anthony Gudu"), 2);
 
+        // Try renting the same vehicle again, which should throw an exception
         assertThrows(VehicleNotAvailableException.class, () ->
                 agency.rentVehicle("C1", new Customer("CU2", "Jane Doe"), 2));
     }

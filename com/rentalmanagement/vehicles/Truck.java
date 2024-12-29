@@ -23,6 +23,17 @@ public class Truck extends Vehicle {
 
     @Override
     public boolean isAvailableForRental() {
-        return false;
+        return super.isAvailable(); // Delegate to the superclass for correct behavior
+    }
+
+    @Override
+    public String toString() {
+        return "Truck{" +
+                "vehicleId='" + getVehicleId() + '\'' +
+                ", model='" + getModel() + '\'' +
+                ", baseRentalRate=" + getBaseRentalRate() +
+                ", cargoCapacity=" + cargoCapacity +
+                ", isAvailable=" + isAvailable() +
+                '}';
     }
 }

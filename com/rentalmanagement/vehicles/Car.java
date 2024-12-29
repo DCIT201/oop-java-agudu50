@@ -22,12 +22,9 @@ public boolean isAutomatic() {
     }
     @Override
     public String toString() {
-        return "Car{" +
-                "vehicleId='" + getVehicleId() + '\'' +
-                ", model='" + getModel() + '\'' +
-                ", baseRentalRate=" + getBaseRentalRate() +
-                ", isAutomatic=" + isAutomatic +
-                '}';
+        return "Car - ID: " + getVehicleId() + ", Model: " + getModel() +
+                ", Rate: $" + getBaseRentalRate() + "/day, Automatic: " + (isAutomatic ? "Yes" : "No");
     }
+
 
 }

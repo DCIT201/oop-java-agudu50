@@ -13,6 +13,16 @@ public class Motorcycle extends Vehicle {
 
     @Override
     public boolean isAvailableForRental() {
-        return false;
+        return super.isAvailable();  // Delegate to the superclass method
+    }
+
+    @Override
+    public String toString() {
+        return "Motorcycle{" +
+                "vehicleId='" + getVehicleId() + '\'' +
+                ", model='" + getModel() + '\'' +
+                ", baseRentalRate=" + getBaseRentalRate() +
+                ", isAvailable=" + isAvailable() +
+                '}';
     }
 }

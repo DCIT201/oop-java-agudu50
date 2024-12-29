@@ -9,7 +9,7 @@ import com.rentalmanagement.vehicles.Motorcycle;
 import com.rentalmanagement.vehicles.Truck;
 
 public class App {
-    public static void main(String[] args) throws InvalidVehicleIdException, VehicleNotAvailableException {
+    public static void main(String[] args) {
         RentalAgency agency = new RentalAgency();
 
         // Add vehicles to the fleet
@@ -24,15 +24,12 @@ public class App {
         // Create a customer
         Customer customer = new Customer("CU1", "John Doe");
 
-        // Rent a vehicle
-
+        // Rent a vehicle with try-catch to handle exceptions
         try {
-            System.out.println("\n" + agency.rentVehicle("C1", customer, 3));
+            System.out.println("\n" + agency.rentVehicle("C1", customer, 3)); // This will throw exceptions if needed
         } catch (InvalidVehicleIdException | VehicleNotAvailableException e) {
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("Error during rental: " + e.getMessage());
         }
-
-
 
         // Display available vehicles after renting
         System.out.println("\nAvailable Vehicles After Renting:");
@@ -42,7 +39,7 @@ public class App {
         System.out.println("\nRental Report:");
         agency.generateRentalReport();
 
-        // Return the vehicle
+        // Return the vehicle with try-catch to handle exceptions
         String returnResult = agency.returnVehicle("C1");
         System.out.println("\nReturn Result: " + returnResult);
 

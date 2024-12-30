@@ -21,10 +21,8 @@ public class Customer implements LoyaltyProgram {
         this.loyaltyPoints = 0; // Default points
     }
 
-    /**
-     * Adds rental points to the customer's total.
-     * @param points the points to add.
-     */
+    /// Adds rental points to the customer's total.
+    /// points the points to add.
     @Override
     public void addRentalPoints(int points) {
         if (points >= 0) {
